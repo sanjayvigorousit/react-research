@@ -161,18 +161,18 @@ const Dashboard = (props) => {
             <path d="M12 0l2.932 8.066 8.132.003-6.564 5.159 2.532 8.047-6.532-4.916-6.532 4.916 2.532-8.047-6.564-5.159 8.132-.003z" />
           </svg>
         </span>
-        <h5 className='font-[500] text-[14px] inline-block'>Transaction List</h5>
+        <h5 className='font-[500] text-[14px] inline-block'>Inplay Match List</h5>
       </div>
       <div className="bg-[#ffffff] border-[1px] border-[#e7eaec] p-5 text-[13px] text-[#676a6c] w-full overflow-x-auto block">
         <table className="w-full max-w-full mb-4 border-collapse">
           <thead>
             <tr className='border-b-[1px] border-[#DDDDDD]'>
-              <th className='border-none p-1'>User Name </th>
-              <th className='border-none p-1'>Merchant Name</th>
-              <th className='border-none p-1'>Transaction Status</th>
-              <th className='border-none p-1'>Offer Status</th>
-              <th className='border-none p-1'>Online Status</th>
-              <th className='border-none p-1'>Offer</th>
+              <th className='border-none p-1'>Match Name </th>
+              <th className='border-none p-1'>Market id/Event ID </th>
+              <th className='border-none p-1'>Only Odds Status</th>
+              <th className='border-none p-1'>Bookmaker Status</th>
+              <th className='border-none p-1'>Fancy Status</th>
+              <th className='border-none p-1'>Range</th>
               <th className='border-none p-1'>Action</th>
             </tr>
           </thead>
@@ -181,8 +181,8 @@ const Dashboard = (props) => {
               inplayMatchList.map((element, index) => (
                 <>
                   <tr className='border-b-[1px] border-[#DDDDDD]'>
-                    <td className='border-none p-1'>{element?.userName}</td>
-                    <td className='border-none p-1'>{element?.merchantName}</td>
+                    <td className='border-none p-1'>{element?.matchName}<br /><small>({element?.matchDate})</small></td>
+                    <td className='border-none p-1'>{element?.marketId}<br /><small>({element?.marketId})</small></td>
                     <td className='border-none p-1'>
                       <div className="w-16">
                         <ToggleButton2 handleChange={() => toggleIsMatchOdds(element)} isChecked={element?.isMatchOdds} name={"isMatchOdds"} />
@@ -214,11 +214,11 @@ const Dashboard = (props) => {
                       </select>
                     </td>
                     <td className='border-none'>
-                      {/* <div className="py-1.5 flex justify-start items-center space-x-2">
+                      <div className="py-1.5 flex justify-start items-center space-x-2">
                         <div onClick={() => onClickMenu(`/app/updateMatch/${element?.marketId}`)} className="border-[1px] border-gray-400 p-1 h-6 cursor-pointer flex justify-center items-center">
                           <FaCheck className='text-[#1FABB5]' />
                         </div>
-                      </div> */}
+                      </div>
                     </td>
                   </tr>
                 </>

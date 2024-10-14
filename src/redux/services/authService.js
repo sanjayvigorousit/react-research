@@ -18,6 +18,10 @@ const authService = {
         const response = await axiosInstance.post("/logout");
         return response.data;
     },
+    socialMediaSignup: async (authData) => {
+        const response = await axios.post('/api/auth/social-signup', authData);
+        return response.data;
+    },
     editUser: async (userData) => {
         const response = await axiosInstance.post("user/userupdate", userData);
         return response.data;

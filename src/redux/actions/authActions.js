@@ -62,3 +62,16 @@ export const deleteUser = createAsyncThunk(
         }
     }
 );
+
+export const socialMediaSignup = createAsyncThunk(
+    'auth/socialMediaSignup',
+    async (authData, { rejectWithValue }) => {
+        try {
+            const response = await authService.socialMediaSignup(authData);
+            toast.success("User deleted successfully");
+            return response;
+        } catch (error) {
+            return rejectWithValue(error.response.data);
+        }
+    }
+);

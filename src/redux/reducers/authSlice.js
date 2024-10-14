@@ -1,7 +1,7 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 
-import { loginUser, logoutUser, editUser, deleteUser } from "../actions/authActions";
+import { loginUser, logoutUser, editUser, deleteUser, socialMediaSignup } from "../actions/authActions";
 
 const authSlice = createSlice({
     name: "auth",
@@ -82,6 +82,18 @@ const authSlice = createSlice({
                 localStorage.removeItem("user");
             })
             .addCase(deleteUser.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            .addCase(socialMediaSignup.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+            .addCase(socialMediaSignup.fulfilled, (state, action) => {
+                state.loading = false;
+                state.user = action.payload;
+            })
+            .addCase(socialMediaSignup.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.payload;
             });

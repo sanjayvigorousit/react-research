@@ -12,8 +12,9 @@ const sportService = {
         return response.data;
     },
     matchListByDatabase: async (reqData) => {
-        const response = await axiosInstance.post("centerPanel/matchListByDatabase", reqData);
-        return response.data;
+        // const response = await axiosInstance.post("centerPanel/matchListByDatabase", reqData);
+        const response = await fetch("/matchListResponse.json");
+        return response;
     },
     matchDetails: async (reqData) => {
         const response = await axiosInstance.post("centerPanel/matchListByDatabase", reqData);
